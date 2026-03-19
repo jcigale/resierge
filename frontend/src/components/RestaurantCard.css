@@ -1,0 +1,172 @@
+.restaurant-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.restaurant-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-top {
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.card-rank {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 36px;
+  padding-top: 2px;
+}
+
+.card-meta {
+  flex: 1;
+}
+
+.card-name {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.badge-cuisine {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.badge-price {
+  background: #E8F5E9;
+  color: var(--success);
+}
+
+.badge-neighborhood {
+  background: var(--tag-bg);
+  color: var(--muted);
+}
+
+.card-why {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--accent-light);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.why-icon {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.card-why p {
+  font-size: 0.875rem;
+  color: #5A4020;
+  line-height: 1.5;
+}
+
+.card-body {
+  padding: 24px 28px;
+}
+
+.card-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .card-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-detail h4 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.detail-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-list li {
+  font-size: 0.875rem;
+  color: var(--primary);
+  padding-left: 12px;
+  position: relative;
+}
+
+.detail-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.detail-text {
+  font-size: 0.875rem;
+  color: var(--primary);
+  line-height: 1.5;
+}
+
+.detail-book {
+  color: var(--success);
+  font-weight: 500;
+}
+
+.accom-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.accom-tag {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: var(--tag-bg);
+}

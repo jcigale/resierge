@@ -1,0 +1,247 @@
+.pref-form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.form-hero {
+  margin-bottom: 40px;
+}
+
+.form-hero h1 {
+  font-size: 2.6rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.form-hero p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* Sections */
+.form-section {
+  margin-bottom: 32px;
+}
+
+.section-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.optional {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 4px;
+}
+
+.required {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+/* Stepper */
+.size-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.stepper-btn:hover {
+  border-color: var(--primary);
+  background: var(--tag-bg);
+}
+
+.size-value {
+  font-size: 1.8rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  min-width: 36px;
+  text-align: center;
+}
+
+.size-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Tags */
+.tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tag:hover {
+  border-color: var(--border-hover);
+  background: var(--tag-bg);
+}
+
+.tag-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.tag-active:hover {
+  background: #333;
+  border-color: #333;
+}
+
+/* Select */
+.select-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--primary);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6560' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  transition: border-color 0.15s;
+}
+
+.select-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Price */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 480px;
+}
+
+.price-btn {
+  padding: 14px 8px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.price-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--tag-bg);
+}
+
+.price-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.price-symbol {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.price-desc {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+/* Textarea */
+.textarea-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--primary);
+  resize: vertical;
+  line-height: 1.5;
+  transition: border-color 0.15s;
+}
+
+.textarea-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.textarea-input::placeholder {
+  color: #AAAAAA;
+}
+
+/* Submit */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-top: 8px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.submit-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.15s;
+}
+
+.submit-btn:hover:not(:disabled) .submit-arrow {
+  transform: translateX(3px);
+}
