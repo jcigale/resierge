@@ -170,3 +170,82 @@
   color: var(--muted);
   background: var(--tag-bg);
 }
+
+/* Likelihood badges */
+.badge-likelihood {
+  font-weight: 600;
+}
+
+.likelihood-easy {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.likelihood-moderate {
+  background: #FFF8E1;
+  color: #F59E0B;
+}
+
+.likelihood-difficult {
+  background: #FFF3E0;
+  color: #EA580C;
+}
+
+.likelihood-very-difficult {
+  background: #FFEBEE;
+  color: #DC2626;
+}
+
+/* Reservation links */
+.card-reserve {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.card-reserve h4 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.reserve-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.reserve-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.reserve-btn:hover {
+  border-color: var(--primary);
+  background: var(--tag-bg);
+}
+
+.reserve-btn-secondary {
+  color: var(--muted);
+  border-style: dashed;
+}
+
+.reserve-walkin {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}

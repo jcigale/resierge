@@ -48,15 +48,32 @@ const NYC_NEIGHBORHOODS = {
   'Staten Island': ['St. George', 'Stapleton'],
 }
 
+const TIME_SLOTS = (() => {
+  const slots = []
+  for (let h = 11; h <= 23; h++) {
+    for (let m of [0, 30]) {
+      if (h === 23 && m === 30) break
+      const hour12 = h % 12 || 12
+      const ampm = h < 12 ? 'AM' : 'PM'
+      const label = `${hour12}:${m === 0 ? '00' : '30'} ${ampm}`
+      const value = `${String(h).padStart(2, '0')}:${m === 0 ? '00' : '30'}`
+      slots.push({ value, label })
+    }
+  }
+  return slots
+})()
+
 const DEFAULT_FORM = {
   group_size: 2,
   dietary_restrictions: [],
   cuisine_preferences: [],
-  location: '',
+  location: [],
   price_range: '$$',
   occasion: '',
   atmosphere: [],
   other_notes: '',
+  dining_date: '',
+  dining_time: '',
 }
 
 export default function PreferenceForm({ onSubmit }) {
@@ -73,11 +90,13 @@ export default function PreferenceForm({ onSubmit }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (!form.location) return
+    if (!form.location.length) return
     onSubmit({
       ...form,
       occasion: form.occasion || undefined,
       other_notes: form.other_notes || undefined,
+      dining_date: form.dining_date || undefined,
+      dining_time: form.dining_time || undefined,
     })
   }
 
@@ -106,6 +125,37 @@ export default function PreferenceForm({ onSubmit }) {
             aria-label="Increase group size"
           >+</button>
           <span className="size-hint">{form.group_size === 1 ? 'person' : 'people'}</span>
+        </div>
+      </section>
+
+      {/* Date & Time */}
+      <section className="form-section">
+        <label className="section-label">When are you dining? <span className="optional">optional</span></label>
+        <div className="datetime-row">
+          <div className="datetime-field">
+            <label className="datetime-label" htmlFor="dining-date">Date</label>
+            <input
+              id="dining-date"
+              type="date"
+              className="date-input"
+              value={form.dining_date}
+              onChange={e => setForm(f => ({ ...f, dining_date: e.target.value }))}
+            />
+          </div>
+          <div className="datetime-field">
+            <label className="datetime-label" htmlFor="dining-time">Time</label>
+            <select
+              id="dining-time"
+              className="date-input"
+              value={form.dining_time}
+              onChange={e => setForm(f => ({ ...f, dining_time: e.target.value }))}
+            >
+              <option value="">Any time</option>
+              {TIME_SLOTS.map(s => (
+                <option key={s.value} value={s.value}>{s.label}</option>
+              ))}
+            </select>
+          </div>
         </div>
       </section>
 
@@ -145,25 +195,32 @@ export default function PreferenceForm({ onSubmit }) {
 
       {/* Location */}
       <section className="form-section">
-        <label className="section-label" htmlFor="location">
+        <label className="section-label">
           Location <span className="required">*</span>
+          {form.location.length > 0 && (
+            <span className="optional"> · {form.location.length} selected</span>
+          )}
         </label>
-        <select
-          id="location"
-          className="select-input"
-          value={form.location}
-          onChange={e => setForm(f => ({ ...f, location: e.target.value }))}
-          required
-        >
-          <option value="">Select a neighborhood...</option>
-          {Object.entries(NYC_NEIGHBORHOODS).map(([borough, hoods]) => (
-            <optgroup key={borough} label={`— ${borough} —`}>
-              {hoods.map(h => (
-                <option key={h} value={`${h}, ${borough}`}>{h}</option>
-              ))}
-            </optgroup>
-          ))}
-        </select>
+        {Object.entries(NYC_NEIGHBORHOODS).map(([borough, hoods]) => (
+          <div key={borough} className="borough-group">
+            <p className="borough-label">{borough}</p>
+            <div className="tag-grid">
+              {hoods.map(h => {
+                const val = `${h}, ${borough}`
+                return (
+                  <button
+                    key={h}
+                    type="button"
+                    className={`tag ${form.location.includes(val) ? 'tag-active' : ''}`}
+                    onClick={() => toggle('location', val)}
+                  >
+                    {h}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        ))}
       </section>
 
       {/* Price Range */}
@@ -233,7 +290,7 @@ export default function PreferenceForm({ onSubmit }) {
         />
       </section>
 
-      <button type="submit" className="submit-btn" disabled={!form.location}>
+      <button type="submit" className="submit-btn" disabled={!form.location.length}>
         <span>Find My Restaurant</span>
         <span className="submit-arrow">→</span>
       </button>

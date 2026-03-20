@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PreferenceForm from './components/PreferenceForm'
 import RestaurantCard from './components/RestaurantCard'
 import LoadingState from './components/LoadingState'
+import { API_URL } from './api'
 import './App.css'
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
     setResults(null)
 
     try {
-      const response = await fetch('/api/recommend/stream', {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(preferences),
@@ -124,7 +125,14 @@ export default function App() {
 
             <div className="restaurant-grid">
               {results.restaurants?.map((r, i) => (
-                <RestaurantCard key={i} restaurant={r} rank={i + 1} />
+                <RestaurantCard
+                  key={i}
+                  restaurant={r}
+                  rank={i + 1}
+                  groupSize={lastPrefs?.group_size}
+                  diningDate={lastPrefs?.dining_date}
+                  diningTime={lastPrefs?.dining_time}
+                />
               ))}
             </div>
           </div>
